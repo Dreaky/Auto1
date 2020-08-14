@@ -28,7 +28,8 @@ jobs:
   
   - powershell: robot --pythonpath . -x outputxunit.xml TestCases.robot
     displayName: 'Run Robot Scripts'
-    errorActionPreference: 'continue'
+    errorActionPreference: 'SilentlyContinue'
+    ignoreLASTEXITCODE: true
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: outputxunit.xml
