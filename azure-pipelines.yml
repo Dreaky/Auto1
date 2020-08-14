@@ -31,14 +31,14 @@ jobs:
     errorActionPreference: 'SilentlyContinue'
     ignoreLASTEXITCODE: true
 
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(System.DefaultWorkingDirectory)\output\*'
+      artifactName: TestResults
+
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: outputxunit.xml
       searchFolder: '$(System.DefaultWorkingDirectory)\output'
       failTaskOnFailedTests: false
       publishRunAttachments: true
-
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathToPublish: '$(System.DefaultWorkingDirectory)\output\*'
-      artifactName: TestResults
