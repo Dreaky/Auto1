@@ -38,9 +38,9 @@ jobs:
     inputs:
       testResultsFormat: 'xUnit'
       testResultsFiles: 'outputxunit.xml'
-#      searchFolder: 'D:\a\1\s\'
+      searchFolder: 'D:\a\1\s\'
 #      condition: succeededOrFailed()
 #      displayName: 'Publish Test Results outputxunit.xml'
-      searchFolder: '$(System.DefaultWorkingDirectory)\s\'
+#      searchFolder: '$(System.DefaultWorkingDirectory)\s\'
       failTaskOnFailedTests: false
       publishRunAttachments: true
