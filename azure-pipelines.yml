@@ -41,8 +41,6 @@ jobs:
 #      searchFolder: 'D:\a\1\s\'
 #      condition: succeededOrFailed()
 #      displayName: 'Publish Test Results outputxunit.xml'
-      searchFolder: '$(System.DefaultWorkingDirectory)'
+      searchFolder: '$(System.DefaultWorkingDirectory)\s\'
       failTaskOnFailedTests: false
       publishRunAttachments: true
-
-  - task: PublishPipelineArtifact@1
