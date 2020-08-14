@@ -30,9 +30,19 @@ jobs:
     displayName: 'Run Robot Scripts'
     errorActionPreference: 'SilentlyContinue'
     ignoreLASTEXITCODE: true
+
+#  - publish: $(System.DefaultWorkingDirectory)/bin/WebApp
+#    artifact: WebApp
+
   - task: PublishTestResults@2
     inputs:
-      testResultsFiles: outputxunit.xml
-      searchFolder: 'D:\a\1\s\'
-      condition: succeededOrFailed()
-      displayName: 'Publish Test Results outputxunit.xml'
+      testResultsFormat: 'xUnit'
+      testResultsFiles: 'outputxunit.xml'
+#      searchFolder: 'D:\a\1\s\'
+#      condition: succeededOrFailed()
+#      displayName: 'Publish Test Results outputxunit.xml'
+      searchFolder: '$(System.DefaultWorkingDirectory)'
+      failTaskOnFailedTests: false
+      publishRunAttachments: true
+
+  - task: PublishPipelineArtifact@1
