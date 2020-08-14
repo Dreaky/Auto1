@@ -26,8 +26,9 @@ jobs:
   - script: pip install robotframework robotframework-seleniumlibrary && npm install chromedriver
     displayName: 'Install dependencies'
   
-  - powershell: robot --pythonpath . -x outputxunit.xml TestCases.robot -ErrorAction SilentlyContinue
+  - powershell: robot --pythonpath . -x outputxunit.xml TestCases.robot
     displayName: 'Run Robot Scripts'
+    errorActionPreference: 'continue'
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: outputxunit.xml
