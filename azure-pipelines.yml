@@ -26,21 +26,20 @@ jobs:
   - script: pip install robotframework robotframework-seleniumlibrary && npm install chromedriver
     displayName: 'Install dependencies'
   
-  - powershell: robot --pythonpath . -x outputxunit.xml --outputdir . TestCases.robot
+  - powershell: robot --pythonpath . -x outputxunit.xml --outputdir output TestCases.robot
     displayName: 'Run Robot Scripts'
     errorActionPreference: 'SilentlyContinue'
     ignoreLASTEXITCODE: true
 
-#  - publish: $(System.DefaultWorkingDirectory)/bin/WebApp
-#    artifact: WebApp
-
   - task: PublishTestResults@2
     inputs:
-#      testResultsFormat: 'xUnit'
       testResultsFiles: outputxunit.xml
-#      searchFolder: 'D:\a\1\s\'
+#      searchFolder: 'D:\a\1\s\output'
 #      condition: succeededOrFailed()
 #      displayName: 'Publish Test Results outputxunit.xml'
       searchFolder: '$(System.DefaultWorkingDirectory)'
       failTaskOnFailedTests: false
       publishRunAttachments: true
+
+  - publish: '$(System.DefaultWorkingDirectory)\output\*'
+    artifact: TestResults
