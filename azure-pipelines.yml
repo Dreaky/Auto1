@@ -36,7 +36,7 @@ jobs:
 
   - task: PublishTestResults@2
     inputs:
-      testResultsFormat: 'xUnit'
+#      testResultsFormat: 'xUnit'
       testResultsFiles: outputxunit.xml
 #      searchFolder: 'D:\a\1\s\'
 #      condition: succeededOrFailed()
