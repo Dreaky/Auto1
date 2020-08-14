@@ -34,12 +34,11 @@ jobs:
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: outputxunit.xml
-#      searchFolder: 'D:\a\1\s\output'
-#      condition: succeededOrFailed()
-#      displayName: 'Publish Test Results outputxunit.xml'
-      searchFolder: '$(System.DefaultWorkingDirectory)'
+      searchFolder: '$(System.DefaultWorkingDirectory)\output'
       failTaskOnFailedTests: false
       publishRunAttachments: true
 
-  - publish: '$(System.DefaultWorkingDirectory)\output\*'
-    artifact: TestResults
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(System.DefaultWorkingDirectory)\output\*'
+      artifactName: TestResults
