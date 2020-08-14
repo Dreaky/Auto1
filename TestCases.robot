@@ -17,6 +17,12 @@ TC1 - Check Filters on Advanced Searh Page
     Then Verify all cars are filtered by First Registration
     And Verify all Cars are Filtered By Price Descending
 
+TC2 - Hello World
+    Log  Hello World
+
+TC3 - Test Fail
+    Fail  Just try if it will be logged to console
+
 
 *** Keywords ***
 Open Tests in Souce Labs
