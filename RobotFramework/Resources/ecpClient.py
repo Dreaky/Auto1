@@ -7,12 +7,14 @@ import xml.etree.ElementTree as ET
 from robot.libraries import BuiltIn
 from ecpResponses import responses
 
+# This disables SSL warning for ignored cerificate verification
+requests.packages.urllib3.disable_warnings()
 
 @library(scope="GLOBAL", version="0.1")
 class ecpClient:
 
     def __init__(self):
-        # logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
+        logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
         self.rfBuiltIn = BuiltIn.BuiltIn()
         pass
 
@@ -25,6 +27,7 @@ class ecpClient:
 
     @keyword('ECP call to ${url} with body ${xml_tree} is made')
     def ecp_call(self, url, xml_tree):
+        ET.register_namespace('ecp', 'http://www.eset.com/2012/02/ecp')
         headers = {'content-type': 'text/xml'}
         xml_tree = xml_tree.getroot()
         request_string = ET.tostring(xml_tree)
@@ -117,22 +120,29 @@ class ecpClient:
         error_source = rc[1]
         unit_within_source = rc[2]
         detailed_error_code = rc[3]
+        try:
+            sev_key = str(*responses[0])
+            severity_msg = responses[0][sev_key][severity]
+            msg += f'{severity_msg}: '
 
-        sev_key = str(*responses[0])
-        severity_msg = responses[0][sev_key][severity]
-        msg += f'{severity_msg}: '
+            error_source_key = str(*responses[error_source])
+            msg += f'{error_source_key}: '
+            unit_dict_location = responses[error_source][error_source_key][unit_within_source]
 
-        error_source_key = str(*responses[error_source])
-        msg += f'{error_source_key}: '
-        unit_dict_location = responses[error_source][error_source_key][unit_within_source]
-        if detailed_error_code == 0:
-            unit_within_msg = str(*unit_dict_location)
-            msg += f'{unit_within_msg}: '
-            msg += f'No detailed error message.'
-        else:
-            unit_within_key = str(*unit_dict_location)
-            detailed_error_msg = responses[error_source][error_source_key][unit_within_source][unit_within_key][
-                detailed_error_code]
-            msg += f'{unit_within_key}: {detailed_error_msg}'
-        msg = msg.replace(u'\xa0', u' ')
+            if detailed_error_code == 0:
+                if len(unit_dict_location) == 1:
+                    unit_within_key = str(*unit_dict_location)
+                    msg += f'{unit_within_key}: '
+                else:
+                    unit_within_key = unit_dict_location
+                    msg += f'{unit_within_key}: '
+                msg += f'No detailed error message.'
+            else:
+                unit_within_key = str(*unit_dict_location)
+                detailed_error_msg = responses[error_source][error_source_key][unit_within_source][unit_within_key][
+                    detailed_error_code]
+                msg += f'{unit_within_key}: {detailed_error_msg}'
+            msg = msg.replace(u'\xa0', u' ')
+        except Exception as e:
+            msg = f'Unable to parse RC Code, please check if responses dict or documentation are updated! e: {e}'
         return rc, msg

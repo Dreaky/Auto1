@@ -608,12 +608,15 @@ responses = {
             },
             97: {
                 "UNIT_MANAGE_LICENSE": {
-                    1: "LICENSE_NOT_FOUND",
-                    2: "LICENSE_ALREADY_MANAGED",
-                    3: "LICENSE_NOT_SUITABLE",
-                    4: "LICENSE_IS_CANCELLED",
-                    5: "LICENSE_NOT_REGISTERED",
-                    6: "LICENSE_EXPIRED"
+                    1: "SEAT_NOT_FOUND",
+                    2: "SEAT_NOT_MANAGED",
+                    3: "ALREADY_MANAGED",
+                    4: "NOT_SUITABLE_FOR_ACCOUNT",
+                    5: "LICENSE_CANCELLED",
+                    6: "LICENSE_NOT_REGISTERED",
+                    7: "LICENSE_EXPIRED",
+                    8: "LICENSE_NOT_FOUND",
+                    9: "OWNER_UNVERIFIABLE"
                 }
             },
             98: "UNIT_PWM_GET_MIGRATION_STATUS"
