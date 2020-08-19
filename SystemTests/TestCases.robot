@@ -21,10 +21,20 @@ TC2 - Hello World
     Log  Hello World
 
 TC3 - Test Fail
+    Log  Do something before failed
     Fail  Just try if it will be logged to console
+
+TC4 - Test Fail in Python
+    [Setup]   Hello world
+    Log   Prepare something
+
+#    Fail  Just try if it will be logged to console
 
 
 *** Keywords ***
+Hello world
+
+
 Open Tests in Souce Labs
     ${desired_capabilities}=    Create Dictionary
     Set to Dictionary    ${desired_capabilities}    build    test_run

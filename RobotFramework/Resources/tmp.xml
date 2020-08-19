@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>\n
+<ecp:message xmlns:ecp="http://www.eset.com/2012/02/ecp">
+    <ecp:container type="response" domain="edtd">
+        <ecp:command name="get-api-tokens" version="1.0">
+            <ecp:response>
+                <code>2054e000</code>
+                <message/>
+            </ecp:response>
+        </ecp:command>
+    </ecp:container>
+</ecp:message>

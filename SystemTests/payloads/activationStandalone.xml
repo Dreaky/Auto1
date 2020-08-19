@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecp:message xmlns:ecp="http://www.eset.com/2012/02/ecp">
+    <ecp:container type="identification" domain="meta">
+        <seatid>00000000-0000-0000-0000-000000000000</seatid>
+    </ecp:container>
+    <ecp:container type="request" domain="eset-account">
+        <ecp:command name="activation" version="2.1">
+            <validate-only>true</validate-only>
+            <register_license>true</register_license>
+            <acttype>STANDALONE_LICENSE_ACTIVATION</acttype>
+            <actoption>LICENSE_KEY</actoption>
+            <country>SK</country>
+            <license>
+                <key>string-to-be-replaced</key>
+            </license>
+            <application>
+                <product>
+                    <code>106</code>
+                </product>
+            </application>
+        </ecp:command>
+    </ecp:container>
+</ecp:message>

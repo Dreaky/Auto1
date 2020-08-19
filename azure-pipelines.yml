@@ -23,10 +23,10 @@ jobs:
       versionSpec: '$(python.version)'
       architecture: 'x64'
 
-  - script: pip install robotframework robotframework-seleniumlibrary && npm install chromedriver
+  - script: pip install -r RobotFramework\requirements.txt
     displayName: 'Install dependencies'
-  
-  - powershell: robot --pythonpath . -x outputxunit.xml --outputdir output TestCases.robot
+
+  - powershell: robot --pythonpath . -x outputxunit.xml --argumentfile config.robot SystemTests
     displayName: 'Run Robot Scripts'
     errorActionPreference: 'SilentlyContinue'
     ignoreLASTEXITCODE: true

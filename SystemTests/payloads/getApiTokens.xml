@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecp:message xmlns:ecp="http://www.eset.com/2012/02/ecp">
+    <ecp:container type="identification" domain="meta">
+        <seatid>00000000-0000-0000-0000-000000000000</seatid>
+    </ecp:container>
+    <ecp:container type="request" domain="edtd">
+        <ecp:command name="get-api-tokens" version="1.0">
+        </ecp:command>
+    </ecp:container>
+</ecp:message>

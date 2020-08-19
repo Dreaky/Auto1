@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecp:message xmlns:ecp="http://www.eset.com/2012/02/ecp">
+    <ecp:container type="identification" domain="meta">
+        <anonymous/>
+    </ecp:container>
+    <ecp:container type="request" domain="eset-account">
+        <ecp:command name="association" version="2.0">
+            <assoctype>ASSOC_ANONYMOUS</assoctype>
+            <seat>
+                <usrf>test_VUtzsHrls4Khg1xLXQ0OmRN2auw=</usrf>
+                <hwf>test_CyZWIRQPRWcBEhSCjV-4Ux4XhfI=</hwf>
+                <name>Test_Pycharm_001</name>
+                <virt>VT_NONE</virt>
+                <os>
+                    <type>WINDOWS</type>
+                    <version>5.1.2600 SP 3.0 NT</version>
+                    <versionid>1407379348914176</versionid>
+                    <lang>SK_SK</lang>
+                    <architecture>x86_64</architecture>
+                </os>
+            </seat>
+            <application>
+                <product>
+                    <code>106</code>
+                    <version>10.0.318.10</version>
+                </product>
+                <platform>WINDOWS</platform>
+                <devicetype>DESKTOP</devicetype>
+                <netrole>CLIENT</netrole>
+                <lang>EN_US</lang>
+            </application>
+        </ecp:command>
+    </ecp:container>
+</ecp:message>
