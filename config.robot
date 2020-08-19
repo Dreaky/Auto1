@@ -4,7 +4,7 @@
 --loglevel TRACE:TRACE
 --outputdir output
 
---pythonpath ..\RobotFramework\Resurces
---variablefile ..\RobotFramework\Resources\variables.py
+--pythonpath RobotFramework\Resurces
+--variablefile RobotFramework\Resources\variables.py
 
 -t Get API Tokens
