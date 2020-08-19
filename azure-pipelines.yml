@@ -26,7 +26,7 @@ jobs:
   - script: pip install -r RobotFramework\requirements.txt
     displayName: 'Install dependencies'
 
-  - powershell: robot --pythonpath . -x outputxunit.xml --argumentfile config.robot SystemTests
+  - powershell: robot --pythonpath . --pythonpath RobotFramework/Resources/ -x outputxunit.xml --argumentfile config.robot SystemTests
     displayName: 'Run Robot Scripts'
     errorActionPreference: 'SilentlyContinue'
     ignoreLASTEXITCODE: true
