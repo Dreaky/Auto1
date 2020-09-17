@@ -33,7 +33,7 @@ jobs:
 
   - task: PublishTestResults@2
     inputs:
-      testResultsFiles: outputxunit.xml
+      testResultsFiles: *.xml
       searchFolder: '$(System.DefaultWorkingDirectory)\output'
       failTaskOnFailedTests: false
       publishRunAttachments: true
